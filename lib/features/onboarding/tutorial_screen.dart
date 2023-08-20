@@ -13,95 +13,49 @@ class TutorialScreen extends StatefulWidget {
 class _TutorialScreenState extends State<TutorialScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
+    return GestureDetector(
       child: Scaffold(
         body: SafeArea(
-          child: TabBarView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Sizes.size20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Gaps.v52,
-                    Text(
-                      "Watch Cool Videos!",
-                      style: TextStyle(
-                        fontSize: Sizes.size36,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Gaps.v20,
-                    Text(
-                      "Videos are personalized for you based on what you watch, like, and share.",
-                      style: TextStyle(
-                        fontSize: Sizes.size20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Sizes.size20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Gaps.v52,
-                    Text(
-                      "Watch Cool Videos!2",
-                      style: TextStyle(
-                        fontSize: Sizes.size36,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Gaps.v20,
-                    Text(
-                      "Videos are personalized for you based on what you watch, like, and share.",
-                      style: TextStyle(
-                        fontSize: Sizes.size20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Sizes.size20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Gaps.v52,
-                    Text(
-                      "Watch Cool Videos3!",
-                      style: TextStyle(
-                        fontSize: Sizes.size36,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Gaps.v20,
-                    Text(
-                      "Videos are personalized for you based on what you watch, like, and share.",
-                      style: TextStyle(
-                        fontSize: Sizes.size20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: Sizes.size48,
+          child: AnimatedCrossFade(
+            crossFadeState: CrossFadeState.showFirst,
+            duration: const Duration(
+              microseconds: 300,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            firstChild: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                TabPageSelector(
-                  color: Colors.white,
-                  selectedColor: Colors.black38,
+                Text(
+                  "Watch Cool Videos!",
+                  style: TextStyle(
+                    fontSize: Sizes.size36,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.v20,
+                Text(
+                  "Videos are personalized for you based on what you watch, like, and share.",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                  ),
+                ),
+              ],
+            ),
+            secondChild: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  "Follow the rules!",
+                  style: TextStyle(
+                    fontSize: Sizes.size36,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.v20,
+                Text(
+                  "Videos are personalized for you based on what you watch, like, and share.",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                  ),
                 ),
               ],
             ),
