@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone2/features/main_navigation/widgets/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -37,23 +38,37 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        onDestinationSelected: _onTap,
-        selectedIndex: _selectedIndex,
-        destinations: const [
-          NavigationDestination(
-            icon: FaIcon(
-              FontAwesomeIcons.house,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            NavTab(
+              text: 'Home',
+              icon: FontAwesomeIcons.house,
+              isSelected: _selectedIndex == 0,
+              onTap: () => _onTap(0),
             ),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
-            label: 'Search',
-          ),
-        ],
+            NavTab(
+              text: 'Discover',
+              icon: FontAwesomeIcons.magnifyingGlass,
+              isSelected: _selectedIndex == 1,
+              onTap: () => _onTap(1),
+            ),
+            NavTab(
+              text: 'Inbox',
+              icon: FontAwesomeIcons.message,
+              isSelected: _selectedIndex == 3,
+              onTap: () => _onTap(3),
+            ),
+            NavTab(
+              text: 'Profile',
+              icon: FontAwesomeIcons.user,
+              isSelected: _selectedIndex == 4,
+              onTap: () => _onTap(4),
+            ),
+          ],
+        ),
       ),
     );
   }
