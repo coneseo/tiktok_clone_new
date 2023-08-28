@@ -108,38 +108,39 @@ class _InterestScreenState extends State<InterestScreen> {
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.size24,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gaps.v32,
-                  const Text(
-                    "Choose your interests",
-                    style: TextStyle(
-                      fontSize: Sizes.size40,
-                      fontWeight: FontWeight.bold,
-                    ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: Sizes.size24,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Gaps.v32,
+                const Text(
+                  "Choose your interests",
+                  style: TextStyle(
+                    fontSize: Sizes.size40,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Gaps.v24,
-                  const Text(
-                    "Get better video recommendations",
-                    style: TextStyle(
-                      fontSize: Sizes.size20,
-                    ),
+                ),
+                Gaps.v24,
+                const Text(
+                  "Get better video recommendations",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
                   ),
-                  Gaps.v64,
-                  Wrap(
-                    runSpacing: 5,
-                    spacing: 10,
-                    children: [
-                      for (var interest in interests)
-                        InterestsButton(interest: interest),
-                    ],
-                  ),
-                ],
-              )),
+                ),
+                Gaps.v64,
+                Wrap(
+                  runSpacing: 5,
+                  spacing: 10,
+                  children: [
+                    for (var interest in interests)
+                      InterestsButton(interest: interest),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
