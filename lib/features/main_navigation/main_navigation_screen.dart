@@ -9,7 +9,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
 
   final screens = [
     const Center(
@@ -30,43 +30,28 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   ];
 
   void _onTap(int index) {
-    selectedIndex = index;
+    _selectedIndex = index;
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
-        currentIndex: selectedIndex,
-        onTap: _onTap,
-        // selectedItemColor: Theme.of(context).primaryColor,
-        items: const [
-          BottomNavigationBarItem(
+      body: screens[_selectedIndex],
+      bottomNavigationBar: NavigationBar(
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+        onDestinationSelected: _onTap,
+        selectedIndex: _selectedIndex,
+        destinations: const [
+          NavigationDestination(
             icon: FaIcon(
               FontAwesomeIcons.house,
             ),
-            label: "Home",
-            tooltip: "Go home?",
-            backgroundColor: Colors.amber,
+            label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-            ),
-            label: "Search",
-            tooltip: "Search",
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.house,
-            ),
-            label: "Home",
-            tooltip: "Go home?",
-            backgroundColor: Colors.red,
+          NavigationDestination(
+            icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+            label: 'Search',
           ),
         ],
       ),
